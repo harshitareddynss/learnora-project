@@ -92,7 +92,7 @@ export default function Dashboard() {
             <div className="space-y-4 mt-6">
               {[
                 "C Programming Notes",
-                "DSA Concepts",
+                "DS Concepts",
                 "ADS Reference Materials",
               ].map((item, i) => (
                 <div

@@ -45,7 +45,7 @@ export default function SignupPage() {
         </h1>
 
         <p className="text-slate-600 mt-3">
-          Join CSP Learning Hub and start learning smarter.
+          Join LEARNORA and start learning smarter.
         </p>
 
         <form onSubmit={handleSignup} className="space-y-5 mt-8">

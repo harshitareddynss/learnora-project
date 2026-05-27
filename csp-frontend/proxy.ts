@@ -3,23 +3,21 @@ import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
+  const role = request.cookies.get("role")?.value;
 
-  const protectedRoutes = [
-    "/dashboard",
-    "/courses",
-    "/practice",
-    "/profile",
-    "/notes",
-    "/resources",
-    "/admin",
-  ];
+  if (!token) {
+    return NextResponse.redirect(
+      new URL("/login", request.url)
+    );
+  }
 
-  const isProtected = protectedRoutes.some((route) =>
-    request.nextUrl.pathname.startsWith(route)
-  );
-
-  if (isProtected && !token) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  if (
+    request.nextUrl.pathname.startsWith("/admin") &&
+    role !== "admin"
+  ) {
+    return NextResponse.redirect(
+      new URL("/dashboard", request.url)
+    );
   }
 
   return NextResponse.next();

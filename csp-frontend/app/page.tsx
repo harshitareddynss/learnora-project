@@ -19,7 +19,7 @@ export default function Home() {
       {/* Navbar */}
       <nav className="glass rounded-full px-8 py-4 flex justify-between items-center relative z-10 shadow-lg">
         <h1 className="text-2xl font-bold text-slate-900">
-          CSP Learning Hub
+          LEARNORA
         </h1>
 
         <div className="glass rounded-full px-6 py-3 flex gap-8 text-slate-700 font-medium">
@@ -56,7 +56,7 @@ export default function Home() {
           </p>
 
           <h1 className="text-7xl font-bold leading-tight text-slate-900">
-            Master C, DSA & ADS
+            Master C, DS & ADS
             <br />
             <span className="bg-gradient-to-r from-blue-700 to-cyan-500 bg-clip-text text-transparent">
               The Smart Way 🚀
@@ -106,7 +106,7 @@ export default function Home() {
             <div className="absolute top-56 right-10 glass rounded-3xl p-5 w-56 shadow-lg">
               <p className="text-slate-500 text-sm">Available Subjects</p>
               <h3 className="text-4xl font-bold text-slate-900 mt-2">3</h3>
-              <p className="text-cyan-500 mt-2 font-medium">C • DSA • ADS</p>
+              <p className="text-cyan-500 mt-2 font-medium">C • DS • ADS</p>
             </div>
 
             <div className="absolute bottom-20 left-10 glass rounded-3xl p-6 w-72 shadow-lg">
@@ -131,7 +131,7 @@ export default function Home() {
         {[
           ["500+", "Students"],
           ["3", "Core Subjects"],
-          ["100+", "Resources"],
+          ["20+", "Resources"],
           ["24/7", "Access"],
         ].map(([num, label], i) => (
           <div key={i} className="text-center">

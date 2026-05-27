@@ -19,7 +19,10 @@ export async function POST(req: Request) {
       );
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
 
     if (!isMatch) {
       return NextResponse.json(
@@ -30,8 +33,9 @@ export async function POST(req: Request) {
 
     const token = jwt.sign(
       {
-        userId: user._id,
+        userId: user._id.toString(),
         email: user.email,
+        role: user.role,
       },
       process.env.JWT_SECRET!,
       {
@@ -48,9 +52,14 @@ export async function POST(req: Request) {
 
     response.cookies.set("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
       path: "/",
+      sameSite: "lax",
+    });
+
+    response.cookies.set("role", user.role, {
+      httpOnly: true,
+      path: "/",
+      sameSite: "lax",
     });
 
     return response;

@@ -27,7 +27,7 @@ export default function NotesPage() {
 
   const groupedNotes = {
     C: notes.filter((note) => note.subject === "C"),
-    DSA: notes.filter((note) => note.subject === "DSA"),
+    DS: notes.filter((note) => note.subject === "DS"),
     ADS: notes.filter((note) => note.subject === "ADS"),
   };
 

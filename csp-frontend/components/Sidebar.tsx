@@ -51,7 +51,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-cyan-500 bg-clip-text text-transparent">
-          CSP Hub
+          LEARNORA
         </h1>
 
         <p className="text-slate-500 text-sm mt-1">
@@ -99,7 +99,7 @@ export default function Sidebar() {
               href="/courses/dsa"
               className="px-4 py-2 rounded-xl text-slate-600 hover:bg-white/60 hover:text-blue-600 transition"
             >
-              DSA
+              DS
             </Link>
 
             <Link

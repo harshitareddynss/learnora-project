@@ -64,7 +64,7 @@ export default function UploadPage() {
             >
               <option value="">Select Subject</option>
               <option value="C">C Programming</option>
-              <option value="DSA">DSA</option>
+              <option value="DS">DS</option>
               <option value="ADS">ADS</option>
             </select>
 
