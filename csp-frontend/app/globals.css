@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eef6ff;
+  --foreground: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  background:
+    linear-gradient(135deg, #eef6ff 0%, #dbeafe 35%, #eff6ff 70%, #e0f2fe 100%);
+}
+
+/* Premium animated background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 25%, rgba(14, 165, 233, 0.16), transparent 30%),
+    radial-gradient(circle at 70% 75%, rgba(96, 165, 250, 0.18), transparent 25%),
+    radial-gradient(circle at 30% 85%, rgba(191, 219, 254, 0.35), transparent 20%);
+  animation: floatGlow 18s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+/* Soft mesh overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(
+      125deg,
+      transparent 0%,
+      rgba(255,255,255,0.35) 40%,
+      transparent 80%
+    );
+  animation: shimmer 14s linear infinite;
+  z-index: -1;
+}
+
+/* Premium glass */
+.glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow:
+    0 10px 40px rgba(59, 130, 246, 0.10),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+/* Soft premium hover */
+.glow-hover {
+  transition: all 0.35s ease;
+}
+
+.glow-hover:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 40px rgba(59,130,246,0.18),
+    0 8px 20px rgba(14,165,233,0.12);
+}
+
+/* Border style */
+.neon-border {
+  border: 1px solid rgba(147, 197, 253, 0.45);
+}
+
+/* Fancy buttons */
+.premium-btn {
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: white;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.22);
+}
+
+.premium-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.30);
+}
+
+/* Inputs */
+.premium-input {
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(191,219,254,0.8);
+  color: #0f172a;
+}
+
+.premium-input::placeholder {
+  color: #64748b;
+}
+
+/* Animations */
+@keyframes floatGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-30px, 25px) scale(1.08);
+  }
+  100% {
+    transform: translate(25px, -20px) scale(1.12);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
