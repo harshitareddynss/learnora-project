@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "axios": "^1.16.1",
+    "lucide-react": "^1.17.0",
+    "monaco-editor": "^0.55.1"
+  }
+}

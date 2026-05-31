@@ -7,12 +7,36 @@ import {
 } from "lucide-react";
 
 export default function Dashboard() {
+  const resources = [
+    "C Programming Notes",
+    "DS Concepts",
+    "ADS Reference Materials",
+  ];
+
+  const cards = [
+    {
+      title: "Notes",
+      desc: "Access academic notes instantly.",
+      icon: <FileText className="text-blue-500 w-6 h-6" />,
+    },
+    {
+      title: "Practice",
+      desc: "Strengthen conceptual understanding.",
+      icon: <BookOpen className="text-cyan-500 w-6 h-6" />,
+    },
+    {
+      title: "Resources",
+      desc: "Explore uploaded study materials.",
+      icon: <Sparkles className="text-purple-500 w-6 h-6" />,
+    },
+  ];
+
   return (
     <>
       <Sidebar />
 
       <main className="ml-[260px] min-h-screen p-10 relative overflow-x-hidden">
-        {/* Decorative background */}
+        {/* Background Blur */}
         <div className="absolute top-10 right-20 w-64 h-64 bg-blue-200/40 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-40 w-72 h-72 bg-cyan-100/40 rounded-full blur-3xl"></div>
 
@@ -27,18 +51,21 @@ export default function Dashboard() {
           </h1>
 
           <p className="text-slate-600 mt-4 text-lg">
-            Continue exploring your academic journey with premium learning resources.
+            Continue exploring your academic journey with premium learning
+            resources.
           </p>
         </div>
 
-        {/* Top cards */}
+        {/* Top Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 relative z-10">
           <div className="glass rounded-3xl p-6 shadow-lg">
             <div className="flex items-center gap-4">
               <TrendingUp className="text-blue-500 w-8 h-8" />
               <div>
                 <p className="text-slate-500">Learning Status</p>
-                <h3 className="text-2xl font-bold text-slate-900">Active</h3>
+                <h3 className="text-2xl font-bold text-slate-900">
+                  Active
+                </h3>
               </div>
             </div>
           </div>
@@ -58,13 +85,15 @@ export default function Dashboard() {
               <Sparkles className="text-purple-500 w-8 h-8" />
               <div>
                 <p className="text-slate-500">Access Mode</p>
-                <h3 className="text-2xl font-bold text-slate-900">Premium</h3>
+                <h3 className="text-2xl font-bold text-slate-900">
+                  Premium
+                </h3>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Main cards */}
+        {/* Main Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 relative z-10">
           <div className="glass rounded-3xl p-8 shadow-xl">
             <h2 className="text-3xl font-bold text-slate-900">
@@ -90,11 +119,7 @@ export default function Dashboard() {
             </h2>
 
             <div className="space-y-4 mt-6">
-              {[
-                "C Programming Notes",
-                "DS Concepts",
-                "ADS Reference Materials",
-              ].map((item, i) => (
+              {resources.map((item, i) => (
                 <div
                   key={i}
                   className="glass rounded-2xl px-5 py-4 text-slate-700 font-medium"
@@ -106,34 +131,24 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Bottom cards */}
+        {/* Bottom Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 relative z-10">
-          {[
-            {
-              title: "Notes",
-              desc: "Access academic notes instantly.",
-              icon: <FileText className="text-blue-500" />,
-            },
-            {
-              title: "Practice",
-              desc: "Strengthen conceptual understanding.",
-              icon: <BookOpen className="text-cyan-500" />,
-            },
-            {
-              title: "Resources",
-              desc: "Explore uploaded study materials.",
-              icon: <Sparkles className="text-purple-500" />,
-            },
-          ].map((item, i) => (
+          {cards.map((item, i) => (
             <div
               key={i}
               className="glass rounded-3xl p-6 shadow-lg"
             >
-              <div className="mb-5">{item.icon}</div>
+              <div className="mb-5">
+                {item.icon}
+              </div>
+
               <h3 className="text-xl font-bold text-slate-900">
                 {item.title}
               </h3>
-              <p className="text-slate-600 mt-3">{item.desc}</p>
+
+              <p className="text-slate-600 mt-3">
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>

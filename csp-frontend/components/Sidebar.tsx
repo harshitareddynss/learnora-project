@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, memo } from "react";
 import {
   LayoutDashboard,
   BookOpen,
@@ -14,7 +14,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-export default function Sidebar() {
+function Sidebar() {
   const router = useRouter();
   const [showCourses, setShowCourses] = useState(false);
 
@@ -63,15 +63,16 @@ export default function Sidebar() {
         {/* Dashboard */}
         <Link
           href="/dashboard"
+          prefetch={true}
           className="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-700 hover:bg-white/60 hover:text-blue-600 transition"
         >
           <LayoutDashboard size={18} />
           Dashboard
         </Link>
 
-        {/* Courses expandable */}
+        {/* Courses */}
         <button
-          onClick={() => setShowCourses(!showCourses)}
+          onClick={() => setShowCourses((prev) => !prev)}
           className="flex items-center justify-between px-4 py-3 rounded-2xl text-slate-700 hover:bg-white/60 hover:text-blue-600 transition"
         >
           <div className="flex items-center gap-3">
@@ -90,6 +91,7 @@ export default function Sidebar() {
           <div className="ml-6 flex flex-col gap-2">
             <Link
               href="/courses/c"
+              prefetch={true}
               className="px-4 py-2 rounded-xl text-slate-600 hover:bg-white/60 hover:text-blue-600 transition"
             >
               C Programming
@@ -97,6 +99,7 @@ export default function Sidebar() {
 
             <Link
               href="/courses/dsa"
+              prefetch={true}
               className="px-4 py-2 rounded-xl text-slate-600 hover:bg-white/60 hover:text-blue-600 transition"
             >
               DS
@@ -104,6 +107,7 @@ export default function Sidebar() {
 
             <Link
               href="/courses/ads"
+              prefetch={true}
               className="px-4 py-2 rounded-xl text-slate-600 hover:bg-white/60 hover:text-blue-600 transition"
             >
               ADS
@@ -111,11 +115,12 @@ export default function Sidebar() {
           </div>
         )}
 
-        {/* Remaining menu */}
-        {menuItems.slice(1).map((item, i) => (
+        {/* Menu */}
+        {menuItems.slice(1).map((item) => (
           <Link
-            key={i}
+            key={item.href}
             href={item.href}
+            prefetch={true}
             className="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-700 hover:bg-white/60 hover:text-blue-600 transition"
           >
             {item.icon}
@@ -124,7 +129,7 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Bottom section */}
+      {/* Bottom */}
       <div className="mt-auto pt-6 border-t border-white/40">
         <div className="glass rounded-2xl p-4 mb-4">
           <p className="text-slate-500 text-sm">Logged in as</p>
@@ -138,8 +143,7 @@ export default function Sidebar() {
             await fetch("/api/auth/logout", {
               method: "POST",
             });
-
-            router.push("/login");
+            router.replace("/login");
           }}
           className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-red-500 hover:bg-red-50 transition"
         >
@@ -150,3 +154,5 @@ export default function Sidebar() {
     </aside>
   );
 }
+
+export default memo(Sidebar);

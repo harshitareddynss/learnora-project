@@ -1,7 +1,13 @@
+"use client";
+
 import Sidebar from "@/components/Sidebar";
-import { PenTool, Brain, Code2 } from "lucide-react";
+import Link from "next/link";
+import { PenTool, Code2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function PracticePage() {
+  const router = useRouter();
+
   const exercises = [
     "Basic C Syntax Practice",
     "Loops & Conditions Exercises",
@@ -16,8 +22,10 @@ export default function PracticePage() {
       <Sidebar />
 
       <main className="ml-[260px] min-h-screen p-10 relative overflow-x-hidden">
+        {/* Background blur */}
         <div className="absolute top-20 right-20 w-72 h-72 bg-cyan-200/40 rounded-full blur-3xl"></div>
 
+        {/* Heading */}
         <div className="relative z-10">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-sm font-semibold">
             Practice Arena
@@ -32,56 +40,61 @@ export default function PracticePage() {
           </p>
         </div>
 
-        {/* Top cards */}
+        {/* Top Cards */}
         <div className="grid md:grid-cols-3 gap-6 mt-10 relative z-10">
-          <div className="glass rounded-3xl p-6 shadow-lg">
+
+          {/* Card 1 - Practice Sets */}
+          <Link
+            href="/practice-sets"
+            className="glass rounded-3xl p-6 shadow-lg hover:-translate-y-2 transition block cursor-pointer"
+          >
             <PenTool className="text-blue-500 w-8 h-8" />
+
             <h3 className="text-xl font-bold mt-4 text-slate-900">
               Practice Sets
             </h3>
+
             <p className="text-slate-600 mt-2">
               Curated exercises for better understanding.
             </p>
-          </div>
+          </Link>
 
-          <div className="glass rounded-3xl p-6 shadow-lg">
-            <Brain className="text-purple-500 w-8 h-8" />
-            <h3 className="text-xl font-bold mt-4 text-slate-900">
-              Concept Reinforcement
-            </h3>
-            <p className="text-slate-600 mt-2">
-              Improve logic and analytical thinking.
-            </p>
-          </div>
+          {/* Card 2 - Concept Reinforcement */}
+          <Link href="/concepts">
+            <div className="bg-white/50 rounded-3xl p-8 shadow-lg hover:scale-105 transition cursor-pointer">
+              <PenTool
+                className="text-purple-500 mb-4"
+                size={34}
+              />
 
-          <div className="glass rounded-3xl p-6 shadow-lg">
+              <h3 className="text-xl font-bold mt-4 text-slate-900">
+                Concept Reinforcement
+              </h3>
+
+              <p className="text-gray-600">
+                Improve logic and analytical thinking.
+              </p>
+            </div>
+          </Link>
+
+          {/* Card 3 - Coding Focus */}
+          <div
+            onClick={() => router.push("/code-editor")}
+            className="glass rounded-3xl p-6 shadow-lg cursor-pointer hover:scale-105 transition"
+          >
             <Code2 className="text-cyan-500 w-8 h-8" />
+
             <h3 className="text-xl font-bold mt-4 text-slate-900">
               Coding Focus
             </h3>
+
             <p className="text-slate-600 mt-2">
               Strengthen programming confidence.
             </p>
           </div>
         </div>
 
-        {/* Practice list */}
-        <div className="glass rounded-3xl p-8 mt-10 shadow-xl relative z-10">
-          <h2 className="text-3xl font-bold text-slate-900">
-            Available Exercises
-          </h2>
-
-          <div className="space-y-4 mt-8">
-            {exercises.map((exercise, i) => (
-              <div
-                key={i}
-                className="glass rounded-2xl px-6 py-5 text-slate-800 font-medium hover:-translate-y-1 transition"
-              >
-                {exercise}
-              </div>
-            ))}
-          </div>
-        </div>
+        
       </main>
     </>
   );
