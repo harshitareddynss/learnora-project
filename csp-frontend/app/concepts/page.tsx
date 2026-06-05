@@ -379,9 +379,9 @@ export default function ConceptsPage() {
                 </ul>
 
                 <div className="flex justify-between items-center mt-6">
-                 <span className="text-xs text-gray-400">
-  {item.topics.length} Topics
-</span>
+                  <span className="text-xs text-gray-400">
+                    {item.topics.length} Topics
+                  </span>
 
                   <button
   onClick={() => window.open(item.url, "_blank")}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   useSearchParams,
@@ -8,13 +8,10 @@ import {
 } from "next/navigation";
 import questions from "@/lib/questions";
 
-export default function PracticeSetsPage() {
+function PracticeSetsContent() {
+  const searchParams = useSearchParams();
 
-  const searchParams =
-    useSearchParams();
-
-  const router =
-    useRouter();
+  const router = useRouter();
 
   const topicNames =
     Object.keys(questions);
@@ -166,5 +163,13 @@ export default function PracticeSetsPage() {
       </div>
 
     </main>
+  );
+}
+
+export default function PracticeSetsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PracticeSetsContent />
+    </Suspense>
   );
 }
